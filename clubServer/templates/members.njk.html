@@ -1,0 +1,33 @@
+{% extends "clubBase.njk.html" %}
+
+{% block metaData %}
+        <title>Soccer Fanatics Club of the Bay</title>
+{% endblock %}
+
+{% block headerData %}
+    <h1 style="font-family:impact; font-size:5em; text-align:center"> List of Members</h1>
+{% endblock %}
+
+{% block main %}
+    <h3 style="font-family:impact; font-size:3em; text-align:center"> List of Members</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Role</th>
+            </tr>
+        </thead>
+    <tbody>
+    {% for user in users%}
+        <tr>
+            <td>{{ user.fname }} {{ user.lname }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{user.role}}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+    
+{% endblock %}
+

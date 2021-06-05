@@ -1,0 +1,71 @@
+{% extends "clubBase.njk.html" %}
+
+{% block metaData %}
+        <title>Soccer Fanatics Club of the Bay</title>
+{% endblock %}
+
+{% block headerData %}
+    <h1 style="font-family:impact; font-size:5em; text-align:center">Become a Member!</h1>
+{% endblock %}
+
+{% block main %}
+    <h2 style="font-family:impact; font-size:3em; text-align:center">Apply Now!</h2>
+    <form id="form" method="post" action="./membershipSignup">
+        <label for="username"> Name: </label>
+        <input type="text" name="username" id="username" required="required" minlength="4">
+        <label for="email"> Email: </label>
+        <input type= "email" name="email" id="email" required="required">
+        <label for="password"> Password: </label>
+        <input type="password" name="password" id="password" required="required" minlength="8">
+        <label for="hear_of_us"> How did you hear of us?: </label>
+        <select name="hear_of_us" id="hear_of_us">
+            <option value="none" selected="selected">None</option>
+            <option value="Social Media">Social Media</option>
+            <option value="Friends">Friends</option>
+            <option value="Existing Members">Existing Member</option>
+            <option value="Internet">Internet</option>
+        </select>
+        <button type="submit" id="signup"> Sign Up! </button>
+    </form>
+    
+    <section id="ThanksDialog" style="text-align:center;">
+        <h3 id="h3" style="text-align:center; font-family:impact; font-size:3em"></h3>
+        <p id="par" style="text-align:center; font-family:impact; font-size:3em"></p>
+    
+    </section>
+{% endblock %}
+
+{% block script %}
+
+<script>
+    let section = document.getElementById("ThanksDialog");
+    let main = document.getElementById("main");
+    let h3 = document.getElementById("h3");
+    let username = document.getElementById("username");
+    let email = document.getElementById("email");
+    let reference = document.getElementById("hear_of_us");
+    let signupbtn = document.getElementById("signup");
+    let par = document.getElementById("par");
+    let closebtn = document.createElement("BUTTON");
+    
+    function thanksBox(){
+        h3.innerHTML = 'Thanks For Signing Up!';
+        par.innerHTML = 'Name: ' + username.value + ' Email: ' + email.value + ' Heard of Us Through: ' + reference.value;
+        closebtn.innerHTML = 'Close';
+        section.appendChild(closebtn);
+        section.classList.toggle("showDialog",true);
+    }
+signupbtn.addEventListener("click",thanksBox);
+    
+    function closeDialog(){
+        let element = document.getElementById("ThanksDialog");
+        element.classList.toggle("showDialog",false);
+    }
+
+closebtn.addEventListener("click",closeDialog);
+    
+    
+</script>
+
+
+{% endblock %}

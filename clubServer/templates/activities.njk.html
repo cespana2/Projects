@@ -1,0 +1,46 @@
+{% extends "clubBase.njk.html" %}
+
+{% block metaData %}
+        <title>Soccer Fanatics Club of the Bay</title>
+{% endblock %}
+
+{% block headerData %}
+    <h1 style="font-family:impact; font-size:5em; text-align:center"> Club Activities </h1>
+    <p style="text-align:center"><img src="images/SoccerBall.jpeg" alt="Soccer ball on field">
+     </p>
+{% endblock %}
+
+{% block main %}
+    <h2 style="font-family:impact"> Activities for this Month </h2>
+    <table id="Activity-Table">
+        <tr>
+            <th>Name</th>
+            <th>Date(s)</th>
+            <th>Description</th>
+        </tr>
+        {% for event in events %}
+        <tr>
+            <th>{{event.name}}</th>
+            <th>{{event.dates}}</th>
+            <th>{{event.description}}</th>
+        </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
+
+{% block script %}
+
+<script>
+/*
+let tbody = document.getElementById("Activity-Table");
+    events.forEach(function(event) {
+        let tr = document.createElement("tr");
+        let content = `<td>${event.name}</td><td>${event.dates}</td><td>${event.description}</td>`;
+        tr.innerHTML = content; tbody.appendChild(tr);
+    })
+*/
+</script>
+
+
+{% endblock %}
+

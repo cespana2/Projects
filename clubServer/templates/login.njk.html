@@ -1,0 +1,46 @@
+{% extends "clubBase.njk.html" %}
+
+{% block metaData %}
+        <title>Soccer Fanatics Club of the Bay</title>
+{% endblock %}
+
+{% block headerData %}
+    <h1 style="font-family:impact; font-size:5em; text-align:center"> Login</h1>
+    <h2 id ="h2" style ="font-family:impact; font-size:2em; border: 0.5em solid lightblue; margin:0 6em; font-color: red"></h2>
+{% endblock %}
+
+{% block main %}
+    <h3 style="font-family:impact; font-size:3em; text-align:center"> Enter Login Info</h3>
+    <form id="form" method="post" action="./loggingIn">
+        <label for="email"> Email: </label>
+        <input type= "email" name="email" id="email" required="required">
+        <label for="password"> Password: </label>
+        <input type="password" name="password" id="password" required="required">
+        <button type="submit" id="login_button"> Login </button>
+    </form>
+{% endblock %}
+
+{% block script %}
+
+<script>
+    let btn = document.getElementById("login_button");
+    let email = document.getElementById("email");
+    let h2 = document.getElementById("h2");
+    let par = document.createElement("p");
+    let header = document.getElementById("header");
+    
+    function clickFunction(){
+        h2.innerHTML = 'Welcome ' + email.value;
+        par.innerHTML = 'This site is currently under construction';
+        h2.style.border = " 0.5em solid red";
+        h2.style.margin = "0 6em";
+        h2.style.fontSize = "2em";
+        h2.style.fontFamily = "impact";
+        h2.style.color = "red";
+        h2.appendChild(par);
+    }
+
+btn.addEventListener("click",clickFunction);
+</script>
+
+{% endblock %}

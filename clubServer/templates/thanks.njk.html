@@ -1,0 +1,19 @@
+{% extends "clubBase.njk.html" %}
+
+{% block metaData %}
+        <title>Soccer Fanatics Club of the Bay</title>
+{% endblock %}
+
+{% block headerData %}
+    <h1 style="font-family:impact; font-size:5em; text-align:center"> Thanks For Becoming a Member!</h1>
+{% endblock %}
+
+{% block main %}
+<h3 style="font-family:impact; font-size:3em; text-align:center"> Here's Your Information:</h3>
+<p>Name: {{memberApplication.username}} </p>
+<p>Email: {{memberApplication.email}} </p>
+<p>Heard of Us: {{memberApplication.hear_of_us}} </p>
+
+{% endblock %}
+
+
