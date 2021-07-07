@@ -1,6 +1,6 @@
 # Soccer Fanatics Club of the Bay
 
-## Website which soccer fans in the bay area can use to connect with other soccer fans. Website allows login ability for members as well as a membership application to become a member. Website changes depending on the user state which can be set to: 
+## Website which soccer fans in the bay area can use to connect with other soccer fans. Website allows login ability for members as well as a membership application to become a member. Website changes depending on the user state, which can be set to: 
 
 ## User : Anybody that clicks on the website and hasn't logged in
 

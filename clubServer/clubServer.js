@@ -5,7 +5,7 @@ const bcrypt = require('bcryptjs');
 let nRounds = 12;
 app.use(express.static('public')); // For static assets
 let urlencodedParser = express.urlencoded({extended: true});
-const port = 3006; // !!! WARNING YOU MUST CONFIGURE THIS CORRECTLY WHEN WE DEPLOY !!!
+const port = process.env.PORT || 3006; // !!! WARNING YOU MUST CONFIGURE THIS CORRECTLY WHEN WE DEPLOY !!!
 const events = require('./eventData.json');
 const users = require('./clubUsersHash.json');
 const nunjucks = require('nunjucks');

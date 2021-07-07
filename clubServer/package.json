@@ -4,12 +4,13 @@
     "chokidar": "^3.5.1",
     "express": "^4.17.1",
     "express-session": "^1.17.2",
-    "gh-pages": "^3.2.0",
     "inherits": "^2.0.4",
     "nunjucks": "^3.2.3"
   },
-  "homepage": "https://cespana2.github.io/SFCB/",
   "scripts": {
-    "deploy": "gh-pages -d clubServer"
+    "start": "node clubServer.js"
+  },
+  "devDependencies": {
+    "gh-pages": "^3.2.3"
   }
 }
