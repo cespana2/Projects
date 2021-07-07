@@ -144,7 +144,7 @@ app.get('/logOut', function(req, res, next){
     })
 });
 
-host = '127.0.0.1';
+host = '0.0.0.0';
 
 app.listen(port, host, function () {
 console.log(`clubServer.js app listening on IPv4: ${host}:${port}`);
