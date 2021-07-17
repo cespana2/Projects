@@ -5,7 +5,7 @@ const bcrypt = require('bcryptjs');
 let nRounds = 12;
 app.use(express.static('public')); // For static assets
 let urlencodedParser = express.urlencoded({extended: true});
-const port = process.env.PORT || 3006; // !!! WARNING YOU MUST CONFIGURE THIS CORRECTLY WHEN WE DEPLOY !!!
+const port = process.env.PORT || 3006;
 const events = require('./eventData.json');
 const users = require('./clubUsersHash.json');
 const nunjucks = require('nunjucks');
@@ -30,6 +30,7 @@ const setUpSessionMiddleware = function (req, res, next) {
 
 app.use(setUpSessionMiddleware);
 
+// Check if user is logged in
 const checkLoggedInMiddleware = function (req, res, next) {
     if (!req.session.user.loggedin) {
         res.render("Forbidden.njk.html");
@@ -40,23 +41,29 @@ const checkLoggedInMiddleware = function (req, res, next) {
 };
 
 
-
+//Home page
 app.get('/', function (req, res) {
     res.render('index.njk.html', {user: req.session.user});
 });
 
+//Login page
 app.get('/login', function(req, res){
     res.render('login.njk.html', {user: req.session.user});
 });
 
+//Membership page
 app.get('/membership', function(req, res){
     res.render('membership.njk.html', {user: req.session.user});
 });
 
+//Activities page
 app.get('/activities', function(req, res){
     res.render('activities.njk.html',{user: req.session.user, events: events});
 });
 
+/* Membership signup page
+Use bcrypt to hash the password inputted by the user in the membership form
+*/
 app.post('/membershipSignup', urlencodedParser , function(req, res){
     let salt = bcrypt.genSaltSync(nRounds);
     let passHash = bcrypt.hashSync("req.body.password", salt);
@@ -69,6 +76,7 @@ app.post('/membershipSignup', urlencodedParser , function(req, res){
     res.render('thanks.njk.html', {memberApplication: req.body});
 });
 
+
 app.get('/serverId', function(req, res){
     var student = {
       "studentName"  :  "Carlos Alberto Espana Jr",
@@ -78,6 +86,7 @@ app.get('/serverId', function(req, res){
     res.send(student);
 });
 
+//Check if user credentials are valid, if not send an error message to user
 app.post('/loggingIn', urlencodedParser , function(req, res){
     console.log(req.body);
     let user = users.find(user => user.email === req.body.email);
@@ -107,11 +116,13 @@ app.post('/loggingIn', urlencodedParser , function(req, res){
     }
 });
 
+//Add activity page
 app.get('/addActivityForm', checkLoggedInMiddleware,  function(req, res){
     res.render('addActivity.njk.html', {user: req.session.user});
 
 });
 
+//Go to activity page after submitting new activity form
 app.get('/addActivity', checkLoggedInMiddleware,  function(req, res){
     let temp = req.query;
     console.log(temp);
@@ -131,11 +142,12 @@ app.get('/addActivity', checkLoggedInMiddleware,  function(req, res){
 });
 
 
-
+//Members page
 app.get('/members', checkLoggedInMiddleware,  function(req, res){
     res.render('members.njk.html', {users: users, user: req.session.user});
 });
 
+//Logout page, set user state to user
 app.get('/logOut', function(req, res, next){
     let options = req.session.cookie;
     req.session.destroy(function (err) {
