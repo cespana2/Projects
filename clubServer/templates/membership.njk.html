@@ -11,8 +11,8 @@
 {% block main %}
     <h2 style="font-family:impact; font-size:3em; text-align:center">Apply Now!</h2>
     <form id="form" method="post" action="./membershipSignup">
-        <label for="username"> Name: </label>
-        <input type="text" name="username" id="username" required="required" minlength="4">
+        <label for="name"> Name: </label>
+        <input type="text" name="name" id="name" required="required" minlength="4">
         <label for="email"> Email: </label>
         <input type= "email" name="email" id="email" required="required">
         <label for="password"> Password: </label>
@@ -41,7 +41,7 @@
     let section = document.getElementById("ThanksDialog");
     let main = document.getElementById("main");
     let h3 = document.getElementById("h3");
-    let username = document.getElementById("username");
+    let name = document.getElementById("name");
     let email = document.getElementById("email");
     let reference = document.getElementById("hear_of_us");
     let signupbtn = document.getElementById("signup");
@@ -50,7 +50,7 @@
     
     function thanksBox(){
         h3.innerHTML = 'Thanks For Signing Up!';
-        par.innerHTML = 'Name: ' + username.value + ' Email: ' + email.value + ' Heard of Us Through: ' + reference.value;
+        par.innerHTML = 'Name: ' + name.value + ' Email: ' + email.value + ' Heard of Us Through: ' + reference.value;
         closebtn.innerHTML = 'Close';
         section.appendChild(closebtn);
         section.classList.toggle("showDialog",true);
