@@ -1,1 +1,1 @@
-Click on different branches to checkout projects!
+Switch Branch to checkout code as well as website!
